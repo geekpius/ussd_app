@@ -23,7 +23,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.color,
     this.textStyle,
     this.minWidth,
-    this.height = 59.0,
+    this.height = 50.0,
     this.scaledText = true,
     this.borderColor,
     this.enabled = true,
@@ -55,7 +55,7 @@ class AppPrimaryButton extends StatelessWidget {
         Text(
           text,
           style: textStyle?? kRegularFontStyle.copyWith(
-            fontSize: AppTheme.fontSize(fontSize?? 19.0),
+            fontSize: AppTheme.fontSize(fontSize?? 14.0),
             color: enabled ? AppTheme.getThemeColor(textColor?? kPrimaryWhite) : AppTheme.getThemeColor(textColor?? kPrimaryBlack),
           ),
         )

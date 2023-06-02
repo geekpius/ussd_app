@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ussd_app/utils/app_theme.dart';
+import 'package:ussd_app/utils/constants.dart';
 
 class UFormLabel extends StatelessWidget {
   const UFormLabel({
@@ -13,8 +14,9 @@ class UFormLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      style: kRegularFontStyle.copyWith(
         fontSize: AppTheme.fontSize(14),
+        color: AppTheme.getThemeColor(kBlackColor),
       ),
     );
   }

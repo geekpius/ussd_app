@@ -14,10 +14,10 @@ const kAikiSecondary1 = Color(0xFFF3E0FF);
 const kAikiSubtitleBlack = Color(0xFF666666);
 const kAikiSubtitleBlack1 = Color(0xFF828282);
 const kAikiSubtitleBlack2 = Color(0xFF727272);
-const kAikiBlack = Color(0xFF0A0D14);
-const kAikiError = Color(0xFFE02D3C);
-const kAikiErrorDark = Color(0xFFB72525);
-const kAikiSuccess = Color(0xFF08875D);
+const kBlackColor = Color(0xFF0A0D14);
+const kErrorColor = Color(0xFFE02D3C);
+const kErrorDarkColor = Color(0xFFB72525);
+const kSuccessColor = Color(0xFF08875D);
 const kAikiGreen = Color(0xFF31AA52);
 const kAikiDone = Color(0xFFDBFFDA);
 const kAikiFieldBg = Color(0xFFFAF9F9);
@@ -34,19 +34,19 @@ const kAikiPending1 = Color(0xFFFEF4CB);
 
 
 const kRegularFontStyle = TextStyle(
-  fontFamily: 'Outfit-Regular',
+  fontFamily: 'Sora-Regular',
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w400,
 );
 
 const kMediumFontStyle = TextStyle(
-  fontFamily: 'Outfit-Medium',
+  fontFamily: 'Sora-Medium',
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w500,
 );
 
 const kBoldFontStyle = TextStyle(
-  fontFamily: 'Outfit-Bold',
+  fontFamily: 'Sora-Bold',
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.w700,
 );

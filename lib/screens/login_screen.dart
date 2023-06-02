@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ussd_app/routes.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/widgets/common/vertical_space.dart';
+import 'package:ussd_app/widgets/forms/app_primary_button.dart';
 import 'package:ussd_app/widgets/forms/u_form_label.dart';
 import 'package:ussd_app/widgets/forms/u_input_field.dart';
 
@@ -42,6 +44,13 @@ class LoginScreen extends HookWidget {
                   phoneFocusNode.unfocus();
                 },
               ),
+
+              AppPrimaryButton(
+                onPressed: (){
+                  AppRoute.pushNamed(context, AppRoute.homePage);
+                },
+                text: 'Confirm',
+              )
             ],
           ),
         ),

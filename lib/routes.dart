@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ussd_app/screens/error_screen.dart';
 import 'package:ussd_app/screens/home_screen.dart';
@@ -26,4 +27,35 @@ final router = GoRouter(
 class AppRoute{
   static String get login => 'login';
   static String get homePage => 'home';
+
+
+  static void go(BuildContext context, String location, {Object? extra}){
+    context.go(location, extra: extra);
+  }
+
+  static Future<Object?> pushNamed(BuildContext context, String routeName, {
+    Map<String, String> pathParameters = const <String, String>{},
+    Map<String, dynamic> queryParameters = const <String, dynamic>{},
+    Object? extra,
+  }) => context.pushNamed(
+    routeName,
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
+    extra: extra,
+  );
+
+  static void pushReplacementNamed(BuildContext context, String routeName, {
+    Map<String, String> pathParameters = const <String, String>{},
+    Map<String, dynamic> queryParameters = const <String, dynamic>{},
+    Object? extra,
+  }) => context.pushReplacementNamed(
+    routeName,
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
+    extra: extra,
+  );
+
+  static void pop(BuildContext context, [Object? result]){
+    context.pop(result);
+  }
 }
