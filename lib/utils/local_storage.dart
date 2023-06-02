@@ -3,7 +3,9 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefStore{
+class LocalStorage{
+
+
 
   Future<void> encodeAndSaveToLocalStorage(String key, value) async {
     final prefs = await SharedPreferences.getInstance();

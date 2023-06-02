@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ussd_app/utils/my_theme.dart';
+import 'package:ussd_app/utils/app_theme.dart';
 
 class UInputField extends StatelessWidget {
   final Function(String?)? onChanged;
@@ -76,7 +76,7 @@ class UInputField extends StatelessWidget {
       textCapitalization: textCapitalization,
       focusNode: focusNode,
       inputFormatters: inputFormatters,
-      cursorColor: MyTheme.getThemeColor(const Color.fromRGBO(0, 0, 0, 0.8)),
+      cursorColor: AppTheme.getThemeColor(const Color.fromRGBO(0, 0, 0, 0.8)),
       decoration: InputDecoration(
         // fillColor: MyTheme.getThemeColor(kZuberiBlackColor10),
         filled: filled,
@@ -104,24 +104,24 @@ class UInputField extends StatelessWidget {
         //   color: MyTheme.getThemeColor(kZuberiSystemErrorColor),
         // ),
         contentPadding: EdgeInsets.symmetric(
-          horizontal: MyTheme.width(16.0),
-          vertical: MyTheme.height(12.0),
+          horizontal: AppTheme.width(16.0),
+          vertical: AppTheme.height(12.0),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(MyTheme.radius(8.0))),
-          borderSide: BorderSide(color: MyTheme.getThemeColor(Colors.red), width: 1.0),
+          borderRadius: BorderRadius.all(Radius.circular(AppTheme.radius(8.0))),
+          borderSide: BorderSide(color: AppTheme.getThemeColor(Colors.red), width: 1.0),
         ),
         border: OutlineInputBorder(
           // borderSide: BorderSide(color: successBorderColor ? kZuberiGreenColor : MyTheme.getThemeColor(kZuberiMetallicColor, kZuberiBlackColor75), width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(MyTheme.radius(8.0))),
+          borderRadius: BorderRadius.all(Radius.circular(AppTheme.radius(8.0))),
         ),
         enabledBorder: OutlineInputBorder(
           // borderSide: BorderSide(color: successBorderColor ? kZuberiGreenColor :  MyTheme.getThemeColor(kZuberiMetallicColor, kZuberiBlackColor75), width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(MyTheme.radius(8.0))),
+          borderRadius: BorderRadius.all(Radius.circular(AppTheme.radius(8.0))),
         ),
         focusedBorder: OutlineInputBorder(
           // borderSide: BorderSide(color: successBorderColor ? kZuberiGreenColor :  MyTheme.getThemeColor(kZuberiMetallicColor, kZuberiBlackColor75), width: 1.0),
-          borderRadius: BorderRadius.all(Radius.circular(MyTheme.radius(8.0))),
+          borderRadius: BorderRadius.all(Radius.circular(AppTheme.radius(8.0))),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyTheme {
+class AppTheme {
 
   static Color getThemeColor(Color lightColor, [Color? darkColor]){
     return lightColor;
