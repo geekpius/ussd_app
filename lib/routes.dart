@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ussd_app/screens/error_screen.dart';
-import 'package:ussd_app/screens/home_screen.dart';
-import 'package:ussd_app/screens/login_screen.dart';
+import 'package:ussd_app/views/error_screen.dart';
+import 'package:ussd_app/views/home_screen.dart';
+import 'package:ussd_app/views/login_screen.dart';
 
 final router = GoRouter(
 

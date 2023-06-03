@@ -7,6 +7,8 @@ import 'package:ussd_app/widgets/forms/app_primary_button.dart';
 import 'package:ussd_app/widgets/forms/u_form_label.dart';
 import 'package:ussd_app/widgets/forms/u_input_field.dart';
 
+import '../utils/constants.dart';
+
 class LoginScreen extends HookWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class LoginScreen extends HookWidget {
     final phoneController = TextEditingController();
     final phoneFocusNode = FocusNode();
     return Scaffold(
+      backgroundColor: kPrimaryWhite,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(

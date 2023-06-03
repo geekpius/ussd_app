@@ -37,13 +37,13 @@ class AppPrimaryButton extends StatelessWidget {
     return Container(
       height: AppTheme.height(height),
       decoration: BoxDecoration(
-          color: enabled ? (color?? AppTheme.getThemeColor(kAikiSecondary)) : Colors.transparent,
+          color: enabled ? (color?? AppTheme.getThemeColor(kSecondaryColor)) : Colors.transparent,
           borderRadius: borderRadius?? BorderRadius.circular(AppTheme.radius(10.0)),
-          border: Border.all(color: enabled ? (borderColor?? AppTheme.getThemeColor(kAikiSecondary)) : Colors.transparent)
+          border: Border.all(color: enabled ? (borderColor?? AppTheme.getThemeColor(kSecondaryColor)) : Colors.transparent)
       ),
       child: MaterialButton(
         elevation: 0,
-        color: color?? AppTheme.getThemeColor(kAikiSecondary),
+        color: color?? AppTheme.getThemeColor(kSecondaryColor),
         // disabledColor: AppTheme.getThemeColor(kZuberiBlackColor10, kDarkModeBorderColor),
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius?? BorderRadius.circular(AppTheme.radius(10.0)),
