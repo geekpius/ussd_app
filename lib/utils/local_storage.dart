@@ -1,80 +1,29 @@
 
-import 'dart:convert';
 
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LocalStorage{
+  static final LocalStorage _localStorage = LocalStorage._internal();
+  factory LocalStorage() => _localStorage;
+  LocalStorage._internal();
 
+  static late FlutterSecureStorage _storage;
 
-
-  Future<void> encodeAndSaveToLocalStorage(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    String encodeData = jsonEncode(value);
-    await prefs.setString(key, encodeData);
+  Future<void> init() async {
+    AndroidOptions getAndroidOptions() => const AndroidOptions(
+      encryptedSharedPreferences: true,
+    );
+    _storage = FlutterSecureStorage(aOptions: getAndroidOptions());
   }
 
-  Future<void> saveStringDataToLocalStorage(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(key, value);
-  }
+  Future<void> write(String key, String? value) async => await _storage.write(key: key, value: value);
 
-  Future<void> saveIntegerDataToLocalStorage(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(key, value);
-  }
+  Future<String?> read(String key) async => await _storage.read(key: key);
 
-  Future<void> saveDoubleDataToLocalStorage(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble(key, value);
-  }
+  Future<Map<String, String>> readAll() async => await _storage.readAll();
 
-  Future<void> saveBoolDataToLocalStorage(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(key, value);
-  }
+  Future<void> deleteAll() async => await _storage.deleteAll();
 
-
-  Future<void> reloadDataFromLocalStorage() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.reload();
-  }
-
-  Future<void> removeStoredDataFromLocalStorage(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(key);
-  }
-
-  Future<Map<String, dynamic>> getDecodedDataFromLocalStorageAsMap(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    var data = prefs.getString(key);
-    return (data != null) ? jsonDecode(data) : {};
-  }
-
-  Future<dynamic> getDecodedDataFromLocalStorageAsDynamic(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    var data = prefs.getString(key);
-    return data != null? jsonDecode(data): null;
-  }
-
-  Future<String?> getStringDataFromLocalStorage(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
-  }
-
-  Future<int?> getIntDataFromLocalStorage(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(key);
-  }
-
-  Future<double?> getDoubleDataFromLocalStorage(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getDouble(key);
-  }
-
-  Future<bool?> getBoolDataFromLocalStorage(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(key);
-  }
-
+  Future<void> delete(String key) async => await _storage.delete(key: key);
 
 }

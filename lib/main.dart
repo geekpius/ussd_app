@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ussd_app/routes.dart';
 import 'package:ussd_app/services/service_locator.dart';
+import 'package:ussd_app/utils/local_storage.dart';
 
 Future<void> main() async{
   setUpServiceLocator();
@@ -30,4 +32,10 @@ class MyApp extends StatelessWidget {
       }
     );
   }
+}
+
+
+Future<void> preLoaders() async{
+  await dotenv.load();
+  await sl.get<LocalStorage>().init();
 }

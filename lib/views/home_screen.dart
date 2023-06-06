@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/utils/constants.dart';
 import 'package:ussd_app/widgets/cards/app_card.dart';
+import 'package:ussd_app/widgets/common/app_image_icon.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class HomeScreen extends HookWidget {
                   horizontal: AppTheme.width(24.0),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Hi, 0542398441',
@@ -30,10 +32,15 @@ class HomeScreen extends HookWidget {
                         color: AppTheme.getThemeColor(kSecondaryColor)
                       ),
                     ),
+                    AppImageIcon(
+                      'mtn.png',
+                      size: AppTheme.radius(32.0),
+                      shape: BoxShape.circle,
+                    ),
                   ],
                 ),
               ),
-            TabBar(
+              TabBar(
               indicatorSize: TabBarIndicatorSize.label,
               labelStyle: kMediumFontStyle.copyWith(
                 fontSize: AppTheme.fontSize(14.0),
@@ -55,21 +62,30 @@ class HomeScreen extends HookWidget {
                 ),
               ],
             ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: AppTheme.width(24.0),
-                      vertical: AppTheme.height(48.0),
-                    ),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
-                    ),
-                  ),
+
+              const Expanded(
+                child: TabBarView(
+                  children: [
+                    Icon(Icons.directions_car),
+                    Icon(Icons.directions_transit),
+                  ],
                 ),
               ),
+              // Expanded(
+              //   child: SingleChildScrollView(
+              //     child: Padding(
+              //       padding: EdgeInsets.symmetric(
+              //         horizontal: AppTheme.width(24.0),
+              //         vertical: AppTheme.height(48.0),
+              //       ),
+              //       child: const Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [],
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
