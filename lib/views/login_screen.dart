@@ -19,7 +19,6 @@ class LoginScreen extends HookWidget {
     final phoneController = TextEditingController();
     final phoneFocusNode = FocusNode();
 
-    print('OKAY ${sl.get<UserViewModel>().getUser.phoneNumber}');
     return Scaffold(
       backgroundColor: kPrimaryWhite,
       body: SafeArea(
