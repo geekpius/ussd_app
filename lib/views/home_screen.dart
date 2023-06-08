@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:provider/provider.dart';
 import 'package:ussd_app/extensions/string_extension.dart';
-import 'package:ussd_app/services/service_locator.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/utils/constants.dart';
 import 'package:ussd_app/view_models/user_view_model.dart';
@@ -13,7 +13,7 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-  final user = sl.get<UserViewModel>().getUser;
+  final user = context.read<UserViewModel>().getUser;
 
   return DefaultTabController(
       length: 2,

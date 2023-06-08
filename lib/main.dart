@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:ussd_app/services/local_storage_service.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/utils/routes.dart';
@@ -10,7 +11,14 @@ import 'package:ussd_app/view_models/user_view_model.dart';
 Future<void> main() async{
   setUpServiceLocator();
   preLoaders();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserViewModel>(create: (context) => UserViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,6 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    fetchLocalStorageData(context);
     return ScreenUtilInit(
       designSize: const Size(414, 896),
       minTextAdapt: true,
@@ -38,10 +47,9 @@ class MyApp extends StatelessWidget {
 Future<void> preLoaders() async{
   await dotenv.load();
   await sl.get<LocalStorageService>().init();
-  fetchLocalStorageData();
 }
 
 
-void fetchLocalStorageData() {
-  sl.get<UserViewModel>().iniState();
+void fetchLocalStorageData(BuildContext context) {
+  context.read<UserViewModel>().iniState();
 }

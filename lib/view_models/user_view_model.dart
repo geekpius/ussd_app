@@ -36,7 +36,7 @@ class UserViewModel extends BaseViewModel{
   }
 
   void fetchUser() async{
-    _userModel = UserModel.fromJson((await _localStorageService.decodeAndReadMap('user')) as Map<String, dynamic>);
+    _userModel = UserModel.fromJson((await _localStorageService.decodeAndReadMap('user')));
   }
 
 }
