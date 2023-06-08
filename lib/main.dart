@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ussd_app/routes.dart';
+import 'package:ussd_app/utils/app_theme.dart';
+import 'package:ussd_app/utils/routes.dart';
 import 'package:ussd_app/services/service_locator.dart';
-import 'package:ussd_app/utils/local_storage.dart';
+import 'package:ussd_app/services/local_storage_service.dart';
+import 'package:ussd_app/view_models/user_view_model.dart';
 
 Future<void> main() async{
   setUpServiceLocator();
+  preLoaders();
   runApp(const MyApp());
 }
 
@@ -24,10 +27,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: router,
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            useMaterial3: true,
-          ),
+          theme: AppTheme.lightTheme,
         );
       }
     );
@@ -37,5 +37,10 @@ class MyApp extends StatelessWidget {
 
 Future<void> preLoaders() async{
   await dotenv.load();
-  await sl.get<LocalStorage>().init();
+  await sl.get<LocalStorageService>().init();
+  fetchLocalStorageData();
+}
+
+void fetchLocalStorageData(){
+  sl.get<UserViewModel>().iniState();
 }

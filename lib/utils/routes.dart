@@ -4,15 +4,28 @@ import 'package:go_router/go_router.dart';
 import 'package:ussd_app/views/error_screen.dart';
 import 'package:ussd_app/views/home_screen.dart';
 import 'package:ussd_app/views/login_screen.dart';
+import 'package:ussd_app/views/splash_screen.dart';
 
 final router = GoRouter(
+  navigatorKey: AppRoute.navigatorKey,
 
   initialLocation: '/',
 
+  // redirect: (context, state) {
+  //   print(sl.get<UserViewModel>().isLoggedIn);
+  //   if(sl.get<UserViewModel>().isLoggedIn) return '/home';
+  //   return '/login';
+  // },
+
   routes: [
     GoRoute(
-      name: AppRoute.login,
+      name: AppRoute.splash,
       path: '/',
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      name: AppRoute.login,
+      path: '/login',
       builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
@@ -25,9 +38,12 @@ final router = GoRouter(
 );
 
 class AppRoute{
+  static String get splash => 'splash';
   static String get login => 'login';
   static String get homePage => 'home';
 
+
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static void go(BuildContext context, String location, {Object? extra}){
     context.go(location, extra: extra);
@@ -58,4 +74,6 @@ class AppRoute{
   static void pop(BuildContext context, [Object? result]){
     context.pop(result);
   }
+
+
 }

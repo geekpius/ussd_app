@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:ussd_app/routes.dart';
+import 'package:ussd_app/services/service_locator.dart';
 import 'package:ussd_app/utils/app_theme.dart';
+import 'package:ussd_app/view_models/user_view_model.dart';
 import 'package:ussd_app/widgets/common/vertical_space.dart';
 import 'package:ussd_app/widgets/forms/app_primary_button.dart';
 import 'package:ussd_app/widgets/forms/u_form_label.dart';
@@ -17,6 +18,8 @@ class LoginScreen extends HookWidget {
   Widget build(BuildContext context) {
     final phoneController = TextEditingController();
     final phoneFocusNode = FocusNode();
+
+    print('OKAY ${sl.get<UserViewModel>().getUser.phoneNumber}');
     return Scaffold(
       backgroundColor: kPrimaryWhite,
       body: SafeArea(
@@ -49,8 +52,8 @@ class LoginScreen extends HookWidget {
               ),
 
               AppPrimaryButton(
-                onPressed: (){
-                  AppRoute.pushNamed(context, AppRoute.homePage);
+                onPressed: () async{
+                  await sl.get<UserViewModel>().login(context, phoneNumber: phoneController.text);
                 },
                 text: 'Confirm',
               )
