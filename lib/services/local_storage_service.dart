@@ -12,11 +12,11 @@ class LocalStorageService{
   static late FlutterSecureStorage _storage;
 
   Future<void> init() async {
-    AndroidOptions getAndroidOptions() => const AndroidOptions(
-      encryptedSharedPreferences: true,
-    );
-    _storage = FlutterSecureStorage(aOptions: getAndroidOptions());
+    _storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
   }
+  AndroidOptions _getAndroidOptions() => const AndroidOptions(
+    encryptedSharedPreferences: true,
+  );
 
   Future<void> write(String key, String? value) => _storage.write(key: key, value: value);
 
@@ -31,13 +31,19 @@ class LocalStorageService{
   Future<void> encodeAndWrite(String key, dynamic value) => _storage.write(key: key, value: jsonEncode(value));
 
   Future<Map> decodeAndReadMap(String key) async {
-    String? data = await _storage.read(key: key);
+    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
+    String? data = await storage.read(key: key);
     return data == null? {} : jsonDecode(data);
   }
 
   Future<dynamic> decodeAndRead(String key) async {
     String? data = await _storage.read(key: key);
     return data == null? null : jsonDecode(data);
+  }
+
+  Future<bool> get isLoggedIn async{
+    Map data = await decodeAndReadMap('user');
+    return data.isNotEmpty;
   }
 
 }

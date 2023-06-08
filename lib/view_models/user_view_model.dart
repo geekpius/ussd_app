@@ -26,7 +26,6 @@ class UserViewModel extends BaseViewModel{
   bool get isLoggedIn => !_userModel.isEmpty;
 
   Future<void> login(BuildContext context, {required String phoneNumber}) async {
-    print(phoneNumber);
 
     setUser = UserModel.fromJson({'phoneNumber': phoneNumber});
     await _localStorageService.encodeAndWrite('user', _userModel.toJson());

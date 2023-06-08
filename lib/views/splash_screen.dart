@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/widgets/common/app_lottie.dart';
-
 import '../utils/constants.dart';
 
 class SplashScreen extends HookWidget {
@@ -11,6 +10,7 @@ class SplashScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
       backgroundColor: kPrimaryWhite,
@@ -32,3 +32,4 @@ class SplashScreen extends HookWidget {
     );
   }
 }
+
