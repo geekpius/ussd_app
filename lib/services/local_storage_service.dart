@@ -30,7 +30,7 @@ class LocalStorageService{
 
   Future<void> encodeAndWrite(String key, dynamic value) => _storage.write(key: key, value: jsonEncode(value));
 
-  Future<Map> decodeAndReadMap(String key) async {
+  Future<Map<String, dynamic>> decodeAndReadMap(String key) async {
     final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
     String? data = await storage.read(key: key);
     return data == null? {} : jsonDecode(data);

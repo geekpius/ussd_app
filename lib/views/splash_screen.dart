@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ussd_app/services/local_storage_service.dart';
 import 'package:ussd_app/utils/app_theme.dart';
+import 'package:ussd_app/utils/routes.dart';
 import 'package:ussd_app/widgets/common/app_lottie.dart';
+import '../services/service_locator.dart';
 import '../utils/constants.dart';
+
 
 class SplashScreen extends HookWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,6 +14,11 @@ class SplashScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    useEffect(() {
+      redirectTo(context);
+      return null;
+    }, []);
 
 
     return Scaffold(
@@ -33,3 +42,17 @@ class SplashScreen extends HookWidget {
   }
 }
 
+
+
+void redirectTo(BuildContext context) async{
+  await Future.delayed(const Duration(seconds: 5));
+  if(await sl.get<LocalStorageService>().isLoggedIn){
+    WidgetsBinding.instance.addPostFrameCallback((_) async{
+      AppRoute.go(context, '/${AppRoute.homePage}');
+    });
+    return;
+  }
+  WidgetsBinding.instance.addPostFrameCallback((_) async{
+    AppRoute.go(context, '/${AppRoute.login}');
+  });
+}

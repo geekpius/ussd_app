@@ -1,13 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ussd_app/services/local_storage_service.dart';
 import 'package:ussd_app/views/error_screen.dart';
 import 'package:ussd_app/views/home_screen.dart';
 import 'package:ussd_app/views/login_screen.dart';
 import 'package:ussd_app/views/splash_screen.dart';
-
-import '../services/service_locator.dart';
 
 final router = GoRouter(
   navigatorKey: AppRoute.navigatorKey,
@@ -19,10 +16,6 @@ final router = GoRouter(
       name: AppRoute.splash,
       path: '/',
       builder: (context, state) => const SplashScreen(),
-      redirect: (context, state) async{
-        if(await sl.get<LocalStorageService>().isLoggedIn) return '/home';
-        return '/login';
-      },
     ),
     GoRoute(
       name: AppRoute.login,

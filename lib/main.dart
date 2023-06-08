@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    fetchLocalStorageData();
     return ScreenUtilInit(
       designSize: const Size(414, 896),
       minTextAdapt: true,
@@ -39,6 +38,7 @@ class MyApp extends StatelessWidget {
 Future<void> preLoaders() async{
   await dotenv.load();
   await sl.get<LocalStorageService>().init();
+  fetchLocalStorageData();
 }
 
 
