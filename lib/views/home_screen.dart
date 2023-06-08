@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ussd_app/extensions/string_extension.dart';
+import 'package:ussd_app/services/service_locator.dart';
 import 'package:ussd_app/utils/app_theme.dart';
 import 'package:ussd_app/utils/constants.dart';
+import 'package:ussd_app/view_models/user_view_model.dart';
 import 'package:ussd_app/widgets/cards/app_card.dart';
 import 'package:ussd_app/widgets/common/app_image_icon.dart';
 
@@ -10,7 +13,9 @@ class HomeScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+  final user = sl.get<UserViewModel>().getUser;
+
+  return DefaultTabController(
       length: 2,
       child: Scaffold(
         backgroundColor: kPrimaryWhite,
@@ -26,15 +31,15 @@ class HomeScreen extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Hi, 0542398441',
+                      'Hi, ${user.phoneNumber}',
                       style: kMediumFontStyle.copyWith(
                         fontSize: AppTheme.fontSize(16.0),
                         color: AppTheme.getThemeColor(kSecondaryColor)
                       ),
                     ),
                     AppImageIcon(
-                      'mtn.png',
-                      size: AppTheme.radius(32.0),
+                      '${(user.phoneNumber??'').getNetworkName()}.${(user.phoneNumber??'').getNetworkName()=='airteltigo'? 'jpg':'png'}',
+                      size: AppTheme.radius(24.0),
                       shape: BoxShape.circle,
                     ),
                   ],
@@ -71,21 +76,6 @@ class HomeScreen extends HookWidget {
                   ],
                 ),
               ),
-              // Expanded(
-              //   child: SingleChildScrollView(
-              //     child: Padding(
-              //       padding: EdgeInsets.symmetric(
-              //         horizontal: AppTheme.width(24.0),
-              //         vertical: AppTheme.height(48.0),
-              //       ),
-              //       child: const Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [],
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
